@@ -34,12 +34,14 @@ def display_plots(individual_grating, reconstruction, idx):
     plt.axis("off")
     plt.suptitle(f"Terms: {idx}")
     plt.pause(0.01)
-
+    
+#Image_res is simply just setting the resolution of the image by powers of 2
+# 8 = 256*256, 9 = 512*512, 1- = 1024 * 1024, etc 
 image_res = 6
 dim = (2**image_res, 2**image_res)
 
 #convert image and resize to square
-image = cv2.imread("BraydenColor.JPG")
+image = cv2.imread("Image_file_location")
 image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 image_size = image[:, :, :3].mean(axis=2)  # Convert to grayscale
 
@@ -107,12 +109,13 @@ fig = plt.figure()
 fig, ax = plt.subplots(1, 2, gridspec_kw={'width_ratios': [2, 2]})
 
 # Step 1
-# Set up empty arrays for final image and
-# individual gratings
+# Set up empty arrays for each color channels
+
 rec_image = np.zeros(image.shape)
 rec_image_green = np.zeros(image.shape)
 rec_image_blue = np.zeros(image.shape)
 
+# individual gratings for each color channel
 individual_grating = np.zeros(
     image.shape, dtype="complex"
 )
@@ -127,7 +130,7 @@ individual_grating_blue = np.zeros(
 idx = 0
 
 # All steps are displayed until display_all_until value
-display_all_until = 50
+display_all_until = 100
 # After this, skip which steps to display using the
 # display_step value
 display_step = 10
@@ -208,6 +211,7 @@ for coords in coords_left_half:
             ax[1].set_axis_off()
             plt.axis("off")
             plt.pause(0.01)
+            #If you want to save each image then get rid of # bellow. Change DPI to increase resolution
             #plt.savefig("img" + str(idx), dpi = 300)
 
 plt.show()
