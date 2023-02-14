@@ -41,9 +41,11 @@ def display_plots(individual_grating, reconstruction, idx):
 image_res = 8
 dim = (2**image_res, 2**image_res)
 
-#convert image and resize to square
+#convert image and resize to square (This is actaully squashing the image into a square)
 image = cv2.imread("Image_file_location")
 image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+
+#Code for the next few lines is used for the computations
 image_size = image[:, :, :3].mean(axis=2)  # Convert to grayscale
 
 # Array dimensions (array is square) and centre pixel
@@ -53,6 +55,8 @@ array_size = min(image_size.shape) - 1 + min(image_size.shape) % 2
 # Crop image so it's a square image
 image = image[:array_size, :array_size]
 centre = int((array_size - 1) / 2)
+
+#Back to colored image
 
 # Convert the image to color
 img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -205,6 +209,7 @@ for coords in coords_left_half:
             plt.imshow(rec_grating_blue)
             plt.set_cmap("Blues")
             plt.axis("off")
+            #Combine all channels
             img_combined = np.uint8(np.dstack((rec_image, rec_image_green, rec_image_blue)))
             ax[1].imshow(img_combined)
             ax[1].set_title("Term " + str(idx))
