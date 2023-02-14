@@ -36,8 +36,9 @@ def display_plots(individual_grating, reconstruction, idx):
     plt.pause(0.01)
     
 #Image_res is simply just setting the resolution of the image by powers of 2
-# 8 = 256*256, 9 = 512*512, 1- = 1024 * 1024, etc 
-image_res = 6
+# 8 = 256*256, 9 = 512*512, 10 = 1024 * 1024, etc 
+# Higher number will mean longer computation time
+image_res = 8
 dim = (2**image_res, 2**image_res)
 
 #convert image and resize to square
@@ -49,10 +50,9 @@ image_size = image[:, :, :3].mean(axis=2)  # Convert to grayscale
 # Use smallest of the dimensions and ensure it's odd
 array_size = min(image_size.shape) - 1 + min(image_size.shape) % 2
 
+# Crop image so it's a square image
 image = image[:array_size, :array_size]
 centre = int((array_size - 1) / 2)
-
-# Crop image so it's a square image
 
 # Convert the image to color
 img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
