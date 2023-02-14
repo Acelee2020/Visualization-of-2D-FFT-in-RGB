@@ -5,7 +5,7 @@ What this code does is it takes an RGB image and splits it into its three color 
 
 To understand this better I HIGHLY recommend reading the article that is linked above
 
-Yes this is inefficient, yes it is slow, yes there are probably better ways to do this. For my purposes, I only needed it to give me some images and that's what I did.
+Yes this is inefficient, yes it is slow, yes there are probably better ways to do this. For my purposes, I only needed it to give me some images and that's what it did.
 
 There is an extra popup when running this program while the sine waves are being added, I do not know how to get rid of it.
 
