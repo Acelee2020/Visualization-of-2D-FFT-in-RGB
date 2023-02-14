@@ -12,3 +12,7 @@ There is an extra popup when running this program while the sine waves are being
 Also up until almost all the sine waves are added, there are color splotches in the image which is something that I am still trying to figure out. They do go away in the end
 
 I hope this code is usefull to someone and I hope they don't mind the utter nonsense I have written and all the grammatical errors and ineffeciences that come with it.
+
+Comments in code should hopefully help you figure out what is going on. Don't forget to replace the image_file_location with the relative path to the image.
+
+I wrote this in VS code
